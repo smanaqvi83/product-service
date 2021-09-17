@@ -15,4 +15,4 @@ Clone the repo locally and go in the directory and run the command following com
 
  **./mvnw spring-boot:run**, in case if we get the Permission Denied error in mac or linux we can run the following command **chmod +x mvnw** and then run the **./mvnw spring-boot:run** command again. 
 
-By default this application will run on the 8080 port, which can be changed from **application.properties** file
+By default this application will run on the **8088** port, which can be changed from **application.properties** file
