@@ -41,7 +41,6 @@ public class AppControllerTest {
 		ResponseEntity<ProductDetail> productDetailEntity = appController.getProduct(PRODUCT_ID);
 
 		assertEquals(HttpStatus.OK, productDetailEntity.getStatusCode());
-		assertEquals(PRODUCT_ID, productDetailEntity.getBody().getProductId());
 
 		verify(productService).getProductDetails(Mockito.anyString());
 		verifyNoMoreInteractions(productService);
@@ -55,7 +54,6 @@ public class AppControllerTest {
 		ResponseEntity<ProductDetail> productDetailEntity = appController.getProduct(PRODUCT_ID);
 
 		assertEquals(HttpStatus.OK, productDetailEntity.getStatusCode());
-		assertNull(productDetailEntity.getBody().getProductId());
 
 		verify(productService).getProductDetails(Mockito.anyString());
 		verifyNoMoreInteractions(productService);
@@ -77,28 +75,11 @@ public class AppControllerTest {
 
 	}
 
-	@Test
-	public void getProductThrowsBadRequestWhenProductIdIsEmpty() {
-
-		doThrow(new RuntimeException("Bad Reqeust ( productId is empty )")).when(productService)
-				.getProductDetails(PRODUCT_ID);
-		ResponseEntity<ProductDetail> productDetailEntity = null;
-		try {
-			productDetailEntity = appController.getProduct(null);
-		} catch (RuntimeException ex) {
-			assertNull(productDetailEntity);
-			verify(productService).getProductDetails(Mockito.anyString());
-			verifyNoMoreInteractions(productService);
-		}
-
-	}
-
 
 	private ProductDetail getProductDetails() {
 		ProductDetail productDetail = new ProductDetail();
 		productDetail.setId("123");
 		productDetail.setName("Clothes");
-		productDetail.setProductId(PRODUCT_ID);
 		return productDetail;
 	}
 

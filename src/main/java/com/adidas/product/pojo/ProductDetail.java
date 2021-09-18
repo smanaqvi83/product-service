@@ -2,12 +2,14 @@ package com.adidas.product.pojo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@JsonPropertyOrder({"id", "product_type", "model_number", "name", "metaData", "view_list", "attribute_list","breadcrumb_list", "callouts","pricing_information","product_description","recommendationsEnabled", "product_link_list", "embellishment", "averageReviewScore","numberOfReviews"})
 public class ProductDetail {
     private String id;
     @JsonProperty("product_type")
@@ -32,11 +34,7 @@ public class ProductDetail {
     @JsonProperty("product_link_list")
     private List<ProductLink> productLinkList = null;
     private Embellishment embellishment;
-    @JsonProperty("product_id")
-    private String productId;
-    @JsonProperty("average_review_score")
     private String averageReviewScore;
-    @JsonProperty("number_of_reviews")
     private String numberOfReviews;
 
     public String getId() {
@@ -149,14 +147,6 @@ public class ProductDetail {
 
     public void setEmbellishment(Embellishment embellishment) {
         this.embellishment = embellishment;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
     }
 
     public String getAverageReviewScore() {

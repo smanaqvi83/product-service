@@ -53,7 +53,6 @@ public class ProductServiceImplTest {
 		doReturn(getProductReview()).when(reviewClient).getReview(Mockito.anyString());
 		doReturn(VALID_USER_AGENT).when(serviceConfig).getUserAgent();
 		ProductDetail productDetail = productService.getProductDetails(PRODUCT_ID);
-		assertEquals(PRODUCT_ID, productDetail.getProductId());
 		assertEquals(TAGREEMENT_REVIEW_SCORE, productDetail.getAverageReviewScore());
 
 		verify(adidasClient).getProduct(Mockito.anyString(), Mockito.anyString());
@@ -68,7 +67,6 @@ public class ProductServiceImplTest {
 		doReturn(getEmptyProductReview()).when(reviewClient).getReview(Mockito.anyString());
 		doReturn(VALID_USER_AGENT).when(serviceConfig).getUserAgent();
 		ProductDetail productDetail = productService.getProductDetails(PRODUCT_ID);
-		assertEquals(PRODUCT_ID, productDetail.getProductId());
 		assertNull(productDetail.getAverageReviewScore());
 
 		verify(adidasClient).getProduct(Mockito.anyString(), Mockito.anyString());
@@ -83,7 +81,6 @@ public class ProductServiceImplTest {
 		doReturn(getEmptyProductReview()).when(reviewClient).getReview(Mockito.anyString());
 		doReturn(VALID_USER_AGENT).when(serviceConfig).getUserAgent();
 		ProductDetail productDetail = productService.getProductDetails(PRODUCT_ID);
-		assertNull(productDetail.getProductId());
 		assertNull(productDetail.getAverageReviewScore());
 
 		verify(adidasClient).getProduct(Mockito.anyString(), Mockito.anyString());
@@ -112,7 +109,6 @@ public class ProductServiceImplTest {
 		ProductDetail productDetail = new ProductDetail();
 		productDetail.setId("123");
 		productDetail.setName("Clothes");
-		productDetail.setProductId(PRODUCT_ID);
 		return productDetail;
 	}
 
