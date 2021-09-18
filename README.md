@@ -4,6 +4,12 @@ In this service we have exposed GET endpoint **/v1.0/product/{productId}** which
 
 First we check the **Adidas** API for the given productId, and once data is found, we then query the other **review-service** to get the average review and number of reviews. 
 
+Our review service is called using the Feign client. 
+Following configs for feign client are also in the **application.properties** file
+
+1. feign.name=reviews
+2. feign.url=http://localhost:8081
+
 If any of the API is down then we have implemented the CircuitBreaker which in our case will return the null object hence no exceptions. 
 
 
